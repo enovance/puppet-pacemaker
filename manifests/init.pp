@@ -16,6 +16,10 @@
 #   communicate between nodes.
 #   Default: $pacemaker::params::hacluster_pwd
 #
+# [*debug_enable*]
+#   Should debug be enable
+#   Default: false
+#
 # === Examples
 #
 # see pacemaker::corosync
@@ -30,9 +34,11 @@
 #
 
 class pacemaker(
-  $hacluster_pwd        = $pacemaker::params::hacluster_pwd
+  $hacluster_pwd = $pacemaker::params::hacluster_pwd,
+  $debug_enable  = false,
 ) inherits pacemaker::params {
   include ::pacemaker::params
   include ::pacemaker::install
+  include ::pacemaker::config
   include ::pacemaker::service
 }
